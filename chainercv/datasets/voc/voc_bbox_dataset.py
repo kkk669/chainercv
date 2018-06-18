@@ -108,8 +108,8 @@ class VOCBboxDataset(GetterDataset):
                 for tag in ('ymin', 'xmin', 'ymax', 'xmax')])
             name = obj.find('name').text.lower().strip()
             label.append(voc_utils.voc_bbox_label_names.index(name))
-        bbox = np.stack(bbox).astype(np.float32)
-        label = np.stack(label).astype(np.int32)
+        bbox = np.vstack(bbox).astype(np.float32)
+        label = np.vstack(label).astype(np.int32)
         # When `use_difficult==False`, all elements in `difficult` are False.
         difficult = np.array(difficult, dtype=np.bool)
         return bbox, label, difficult
