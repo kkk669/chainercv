@@ -1,7 +1,7 @@
 import numpy as np
 
 import chainer
-from chainer import cuda
+from chainer.backends import cuda
 import chainer.functions as F
 
 from chainercv.links.model.faster_rcnn.utils.anchor_target_creator import\
@@ -40,7 +40,7 @@ class FasterRCNNTrainChain(chainer.Chain):
             in [#FRCNN]_.
         anchor_target_creator: An instantiation of
             :class:`~chainercv.links.model.faster_rcnn.AnchorTargetCreator`.
-        proposal_target_creator_params: An instantiation of
+        proposal_target_creator: An instantiation of
             :class:`~chainercv.links.model.faster_rcnn.ProposalTargetCreator`.
 
     """
@@ -160,7 +160,7 @@ def _smooth_l1_loss(x, t, in_weight, sigma):
 
 
 def _fast_rcnn_loc_loss(pred_loc, gt_loc, gt_label, sigma):
-    xp = chainer.cuda.get_array_module(pred_loc)
+    xp = chainer.backends.cuda.get_array_module(pred_loc)
 
     in_weight = xp.zeros_like(gt_loc)
     # Localization loss is calculated only for positive rois.
