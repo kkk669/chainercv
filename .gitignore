@@ -14,3 +14,7 @@ dist/
 check_autopep8
 
 tests/bin/
+
+/examples/ssd/models/
+/examples/ssd/data/
+*.npz
