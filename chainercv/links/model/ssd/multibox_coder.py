@@ -94,7 +94,7 @@ class MultiboxCoder(object):
                         (cy, cx, s * np.sqrt(ar), s / np.sqrt(ar)))
 
         # (center_y, center_x, height, width)
-        self._default_bbox = np.stack(default_bbox)
+        self._default_bbox = np.vstack(default_bbox)
         self._variance = variance
 
     @property

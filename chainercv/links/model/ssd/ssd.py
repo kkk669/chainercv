@@ -201,7 +201,7 @@ class SSD(chainer.Chain):
 
         with chainer.using_config('train', False), \
                 chainer.function.no_backprop_mode():
-            x = chainer.Variable(self.xp.stack(x))
+            x = chainer.Variable(self.xp.asarray(x))
             mb_locs, mb_confs = self(x)
         mb_locs, mb_confs = mb_locs.array, mb_confs.array
 
