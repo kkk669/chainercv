@@ -1,6 +1,6 @@
 import numpy as np
 
-from chainer import cuda
+from chainer.backends import cuda
 
 from chainercv.links.model.faster_rcnn.utils.bbox2loc import bbox2loc
 from chainercv.utils.bbox.bbox_iou import bbox_iou
@@ -74,7 +74,7 @@ class ProposalTargetCreator(object):
                 :math:`L` is the number of foreground classes.
             loc_normalize_mean (tuple of four floats): Mean values to normalize
                 coordinates of bouding boxes.
-            loc_normalize_std (tupler of four floats): Standard deviation of
+            loc_normalize_std (tuple of four floats): Standard deviation of
                 the coordinates of bounding boxes.
 
         Returns:
